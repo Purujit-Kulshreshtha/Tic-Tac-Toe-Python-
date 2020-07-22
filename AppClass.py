@@ -11,7 +11,7 @@ class App():
 		self.turn = True
 		self.block = [0, 0]
 		self.clicked = None
-		self.board = BOARD
+		self.board = BOARD_2
 
 	def run(self):
 		while self.running:
@@ -57,13 +57,22 @@ class App():
 				if symbol == "0":
 					radius = 50
 					centre_x = 150 * (xindex + 1)
-					centre_y = 175 ^ (yindex + 1)
+					centre_y = 162 * (yindex + 1)
 					centre = (centre_x, centre_y)
 					pygame.draw.circle(window, BLACK, centre, radius, 3)
 
 				elif symbol == "X":
-					#draw Cross
-					pass
+					#line 1
+					top_left = (100 + (CELL_SIZE * xindex), 120 + (CELL_SIZE * yindex))
+					bottom_right = (200 + (CELL_SIZE * xindex), 210 + (CELL_SIZE * yindex))
+					pygame.draw.line(window, BLACK, top_left, bottom_right, 4)
+
+					#line 2
+					top_right = (100 + (CELL_SIZE * xindex), 210 + (CELL_SIZE * yindex))
+					bottom_left = (200 + (CELL_SIZE * xindex), 120 + (CELL_SIZE * yindex))
+					pygame.draw.line(window, BLACK, top_right, bottom_left, 4)
+
+					
 				else:
 					#draw nothing
 					pass
